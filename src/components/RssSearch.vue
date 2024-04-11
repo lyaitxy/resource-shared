@@ -6,8 +6,14 @@
       placeholder="请输入想要搜索的资源"
       bgColor="#EEEEEE"
       cancelButton="none"
-      @confirm="search"
     />
+    <button
+    class="search-button"
+      hover-class="button-hover"
+      @click="search"
+    >
+    搜索
+    </button>
   </view>
 </template>
 
@@ -25,8 +31,18 @@ const search = () => {
 <style scoped lang='scss'>
 .rss-search {
   width: 100%;
+  display: flex;
+  justify-content: center;
   .search-bar {
-    width: 100%;
+    width: 50%;
+  }
+  .search-button {
+    width: 30%;
+    height: 40px;
+    color: #020202;
+    text-align: center;
+    border: 1px solid #020202;
+    border-radius: 5px;
   }
 }
 </style>

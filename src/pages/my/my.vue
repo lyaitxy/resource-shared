@@ -3,10 +3,10 @@
     <!--个人头像与名称-->
     <view class="user-info" v-if="isLogin">
       <image src="https://img.yzcdn.cn/vant/cat.jpeg" class="avatar"></image>
-      <text class="name">用户名</text>
+      <text class="name">{{ username }}</text>
     </view>
     <view v-else>
-      <text class="name" @tap="logining()">点击登录</text>
+      <text class="name" @tap="toLogin">点击登录</text>
     </view>
     <!-- 一条线 -->
     <view class="line"></view>
@@ -23,7 +23,7 @@
         <text class="text">个人信息</text>
         <uni-icons type="right" size="20" color="#999"></uni-icons>
       </view>
-      <view class="item">
+      <view class="item" @tap="toSetting">
         <text class="text">设置</text>
         <uni-icons type="right" size="20" color="#999"></uni-icons>
       </view>
@@ -33,19 +33,31 @@
 
 <script lang="ts" setup>
 import { ref } from 'vue'
+import { onShow } from '@dcloudio/uni-app'
 import { useMemberStore } from '@/stores';
 import { postLoginAPI } from '@/services/user';
-import type { allHttpRes } from '@/types/allHttpRes';
 const memberStore = useMemberStore();
 // 获取用户信息
 const userInfo = ref(memberStore.profile);
+const username = ref('');
+
 //是否登录
 const isLogin = ref(false);
+isLogin.value = memberStore.profile ? true : false;
+//跳转到登录界面
+const toLogin = () => {
+  uni.navigateTo({
+    url: '/pages/login/login'
+  })
+}
+const toSetting = () => {
+  uni.navigateTo({
+    url: '/pagesMember/settings/settings'
+  })
+}
 const logining = async(username: string, password: string) => {
   const res = await postLoginAPI({username, password});
-  if (res.code === 200) {
-    isLogin.value = true;
-  }
+  console.log(res);
 }
 const openLiked = () => {
   uni.showToast({
@@ -53,6 +65,9 @@ const openLiked = () => {
     icon: 'success'
   })
 }
+onShow(() => {
+  username.value = memberStore.profile?.username || '';
+})
 </script>
 
 <style scoped lang="scss">
