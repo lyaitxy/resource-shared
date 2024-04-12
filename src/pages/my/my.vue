@@ -16,6 +16,10 @@
         <uni-icons type="right" size="20" color="#999"></uni-icons>
       </view>
       <view class="item">
+        <text class="text">我的发布</text>
+        <uni-icons type="right" size="20" color="#999"></uni-icons>
+      </view>
+      <view class="item">
         <text class="text">发布资源</text>
         <uni-icons type="right" size="20" color="#999"></uni-icons>
       </view>
@@ -35,38 +39,39 @@
 import { ref } from 'vue'
 import { onShow } from '@dcloudio/uni-app'
 import { useMemberStore } from '@/stores';
-import { postLoginAPI } from '@/services/user';
 const memberStore = useMemberStore();
 // 获取用户信息
-const userInfo = ref(memberStore.profile);
 const username = ref('');
 
 //是否登录
 const isLogin = ref(false);
-isLogin.value = memberStore.profile ? true : false;
 //跳转到登录界面
 const toLogin = () => {
   uni.navigateTo({
     url: '/pages/login/login'
   })
 }
+//跳转到设置界面
 const toSetting = () => {
   uni.navigateTo({
     url: '/pagesMember/settings/settings'
   })
 }
-const logining = async(username: string, password: string) => {
-  const res = await postLoginAPI({username, password});
-  console.log(res);
-}
 const openLiked = () => {
-  uni.showToast({
-    title: '打开我的收藏',
-    icon: 'success'
+  if(memberStore.profile === undefined) {
+    uni.showToast({
+      title: '请先登录',
+      icon: 'none'
+    })
+    return;
+  }
+  uni.navigateTo({
+    url: '/pagesMember/myLIked/myLIked'
   })
 }
 onShow(() => {
   username.value = memberStore.profile?.username || '';
+  isLogin.value = memberStore.profile ? true : false;
 })
 </script>
 
@@ -102,7 +107,7 @@ onShow(() => {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 20px 0;
+    padding: 15px 0;
     border-bottom: 1px solid #000;
     .text {
       font-size: 20px;

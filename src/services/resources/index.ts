@@ -8,3 +8,30 @@ export const getTop10ResourceAPI = () => {
     method: 'GET'
   })
 }
+
+//获取搜索资源
+export const getSearchResourceAPI = (data: { keyword: string }) => {
+  return http<allHttpRes<resource[]>>({
+    url: '/resource/findResourceByKeyword',
+    method: 'POST',
+    data
+  })
+}
+
+//获取收藏资源
+export const getLikedResourceAPI = (data: {user_id: number}) => {
+  return http<allHttpRes<resource[]>>({
+    url: '/resource/findLikedByUserId',
+    method: 'POST',
+    data
+  })
+}
+
+//获取用户发布的资源
+export const getPublishedResourceAPI = (data: {publisher_id: number}) => {
+  return http<allHttpRes<resource[]>>({
+    url: '/resource/findResourceByPublisherId',
+    method: 'POST',
+    data
+  })
+}

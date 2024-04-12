@@ -1,5 +1,5 @@
 <template>
-    <uni-card padding="10px 0" v-for="item in list" :key="item.id">
+    <uni-card padding="10px 0" v-for="item in list" :key="item.id" @tap="toDetail(item)">
 				<text class="uni-body uni-mt-5">{{ item.description }}</text>
 				<view class="card-actions">
 					<view class="card-actions-item" @click="actionsClick('分享')">
@@ -22,7 +22,11 @@ const actionsClick = (action: string) => {
     icon: 'success'
   })
 }
-
+const toDetail = (item:resource) => {
+  uni.navigateTo({
+    url: `/pages/resourceDetail/resourceDetail?item=` + encodeURIComponent(JSON.stringify(item))
+  })
+};
 defineProps<{
   list: resource[]
 }>()

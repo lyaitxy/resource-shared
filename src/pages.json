@@ -27,6 +27,12 @@
 			"style": {
 				"navigationBarTitleText": "登录"
 			}
+		},
+		{
+			"path": "pages/resourceDetail/resourceDetail",
+			"style": {
+				"navigationBarTitleText": "资源详情"
+			}
 		}
 	],
 	"tabBar": {
@@ -69,6 +75,12 @@
 					"path": "myLIked/myLIked",
 					"style": {
 						"navigationBarTitleText": "我的收藏"
+					}
+				},
+				{
+					"path": "myPublished/myPublished",
+					"style": {
+						"navigationBarTitleText": "myPublished"
 					}
 				}
 			]
