@@ -1,4 +1,5 @@
 <template>
+	
     <uni-card padding="10px 0" v-for="item in list" :key="item.id" @tap="toDetail(item)">
 				<text class="uni-body uni-mt-5">{{ item.description }}</text>
 				<view class="card-actions">

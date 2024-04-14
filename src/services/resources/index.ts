@@ -35,3 +35,12 @@ export const getPublishedResourceAPI = (data: {publisher_id: number}) => {
     data
   })
 }
+
+//新增资源
+export const postAddResourceAPI = (data: {desc: string, content: string, publisher_id: number}) => {
+  return http<allHttpRes<resource>>({
+    url: '/resource/add',
+    method: 'POST',
+    data
+  })
+}

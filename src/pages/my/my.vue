@@ -15,11 +15,11 @@
         <text class="text">我的收藏</text>
         <uni-icons type="right" size="20" color="#999"></uni-icons>
       </view>
-      <view class="item">
+      <view class="item" @tap="toPublished">
         <text class="text">我的发布</text>
         <uni-icons type="right" size="20" color="#999"></uni-icons>
       </view>
-      <view class="item">
+      <view class="item" @tap="toAddResource">
         <text class="text">发布资源</text>
         <uni-icons type="right" size="20" color="#999"></uni-icons>
       </view>
@@ -55,6 +55,32 @@ const toLogin = () => {
 const toSetting = () => {
   uni.navigateTo({
     url: '/pagesMember/settings/settings'
+  })
+}
+//跳转到我的发布
+const toPublished = () => {
+  if(memberStore.profile === undefined) {
+    uni.showToast({
+      title: '请先登录',
+      icon: 'none'
+    })
+    return;
+  }
+  uni.navigateTo({
+    url: '/pagesMember/myPublished/myPublished'
+  })
+}
+//跳转到发布资源
+const toAddResource = () => {
+  if(memberStore.profile === undefined) {
+    uni.showToast({
+      title: '请先登录',
+      icon: 'none'
+    })
+    return;
+  }
+  uni.navigateTo({
+    url: '/pagesMember/publishResource/publishResource'
   })
 }
 const openLiked = () => {

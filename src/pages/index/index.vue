@@ -6,16 +6,19 @@
 
     </view>
 
-    <view class="liked" v-if="!isSearch">
+    <scroll-view scroll-y refresher-enabled>
+      <view class="liked" v-if="!isSearch">
       <!-- 这里放一个猜你喜欢模块 -->
       <view>热门前10资源</view>
       <RssResourceCard :list="likedList"></RssResourceCard>
     </view>
 
-    <view class="search_keyword" v-else>
-      <view>搜索的相关资源</view>
-      <RssResourceCard :list="searchList"></RssResourceCard>
-    </view>
+      <view class="search_keyword" v-else>
+        <view>搜索的相关资源</view>
+        <RssResourceCard :list="searchList"></RssResourceCard>
+      </view>
+    </scroll-view>
+    
   </view>
 </template>
 

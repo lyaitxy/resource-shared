@@ -1,5 +1,4 @@
 <template>
-  <div class="settings">settings</div>
   <button
     hover-class="button-hover"
     @click="loginOut"

@@ -1,0 +1,147 @@
+@font-face {
+  font-family: "iconfont"; /* Project id 4506147 */
+  src: url('iconfont.woff2?t=1713014614504') format('woff2'),
+       url('iconfont.woff?t=1713014614504') format('woff'),
+       url('iconfont.ttf?t=1713014614504') format('truetype');
+}
+
+.iconfont {
+  font-family: "iconfont" !important;
+  font-size: 16px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-formatheader1:before {
+  content: "\e860";
+}
+
+.icon-redo:before {
+  content: "\e6e5";
+}
+
+.icon-indent:before {
+  content: "\e7f3";
+}
+
+.icon-outdent:before {
+  content: "\e7f4";
+}
+
+.icon-shanchu:before {
+  content: "\e626";
+}
+
+.icon-zitishangbiao:before {
+  content: "\ec8b";
+}
+
+.icon-zitixiabiao:before {
+  content: "\ec8c";
+}
+
+.icon-undo:before {
+  content: "\e739";
+}
+
+.icon-checklist:before {
+  content: "\e602";
+}
+
+.icon-text-direction-r:before {
+  content: "\e6d9";
+}
+
+.icon-font:before {
+  content: "\e620";
+}
+
+.icon-date:before {
+  content: "\e662";
+}
+
+.icon-font-size:before {
+  content: "\e7f7";
+}
+
+.icon-line-height:before {
+  content: "\e7f8";
+}
+
+.icon-wuxupailie:before {
+  content: "\ec80";
+}
+
+.icon-juzhongduiqi:before {
+  content: "\ec81";
+}
+
+.icon-youxupailie:before {
+  content: "\ec82";
+}
+
+.icon-youduiqi:before {
+  content: "\ec87";
+}
+
+.icon-zitishanchuxian:before {
+  content: "\ec88";
+}
+
+.icon-zuoduiqi:before {
+  content: "\ec89";
+}
+
+.icon-zuoyouduiqi:before {
+  content: "\ec8a";
+}
+
+.icon-Character-Spacing:before {
+  content: "\e964";
+}
+
+.icon-fontbgcolor:before {
+  content: "\e6a1";
+}
+
+.icon-723bianjiqi_duanhouju:before {
+  content: "\e600";
+}
+
+.icon-clearedformat:before {
+  content: "\e601";
+}
+
+.icon-icon-text_color:before {
+  content: "\e6f8";
+}
+
+.icon-a-723bianjiqi_duanhouju:before {
+  content: "\e607";
+}
+
+.icon-fengexian:before {
+  content: "\ec7f";
+}
+
+.icon-zitijiacu:before {
+  content: "\ec83";
+}
+
+.icon-zitibiaoti:before {
+  content: "\ec84";
+}
+
+.icon-zitixiahuaxian:before {
+  content: "\ec85";
+}
+
+.icon-zitixieti:before {
+  content: "\ec86";
+}
+
+.icon-charutupian:before {
+  content: "\e606";
+}
+

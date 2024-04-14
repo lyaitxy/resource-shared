@@ -15,12 +15,8 @@ const httpInterceptor = {
   }
 }
 uni.addInterceptor('request', httpInterceptor)
-//封装请求
-interface Data<T> {
-  code: string,
-  msg: string,
-  result: T
-}
+uni.addInterceptor('uploadFile', httpInterceptor)
+
 export const http = <T>(options: UniApp.RequestOptions) => {
   // 返回一个promise对象
   return new Promise<T>((resolve, reject) => {

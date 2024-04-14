@@ -82,8 +82,33 @@
 					"style": {
 						"navigationBarTitleText": "myPublished"
 					}
+				},
+				{
+					"path": "publishResource/publishResource",
+					"style": {
+						"navigationBarTitleText": "发布资源"
+					}
 				}
 			]
 		}
-	]
+	],
+	// 分包下载配置
+	"preloadRule": {
+		"pagesMember/settings/settings": {
+			"network": "all",
+			"packages": ["pagesMember"]
+		},
+		"pagesMember/myLIked/myLIked": {
+			"network": "all",
+			"packages": ["pagesMember"]
+		},
+		"pagesMember/myPublished/myPublished": {
+			"network": "all",
+			"packages": ["pagesMember"]
+		},
+		"pagesMember/publishResource/publishResource": {
+			"network": "all",
+			"packages": ["pagesMember"]
+		}
+	}
 }
