@@ -7,10 +7,23 @@
     placeholder=""
     placeholder-class="input-placeholder"
   />
-
+  <view>选择附件(文件链接复制到浏览器获取文件):</view>
+  <button
+    hover-class="button-hover"
+    @click="uploadFile"
+  >
+    选择文件
+  </button>
+  
+  <view class="fileList">
+    <text class="fileItem" v-for="(item, index) in files" :key="index">{{ item }}</text>
+  </view>
   <view>
     <button type="primary" @click="publish">发布</button>
   </view>
+  
+  
+
 </template>
 
 <script setup lang="ts">
@@ -20,6 +33,8 @@ import { useMemberStore } from '@/stores/modules/member'
 const memberStore = useMemberStore()
 let description = ref('')
 let resourceDetail = ref("")
+let fileList = ref("")
+let files = ref<any>([])
 const myEditor = ref()
 const publish = async() => {
   await myEditor.value.getContent()
@@ -34,7 +49,8 @@ const addResource = async () => {
   const res = await postAddResourceAPI({
     desc: description.value,
     content: resourceDetail.value,
-    publisher_id: memberStore.profile?.id!
+    publisher_id: memberStore.profile?.id!,
+    fileList: fileList.value
   })
   if (res.code === 200) {
     // 新增成功
@@ -55,6 +71,47 @@ const addResource = async () => {
     })
   }
 }
+// 上传文件
+const uploadFile = () => {
+  // 选择文件
+  uni.chooseMessageFile({
+    count: 1,
+    type: 'file',
+    success: (res) => {
+      // 将文件上传到服务器
+      const file = res.tempFiles[0]
+      uni.uploadFile({
+        url: 'http://localhost:8081/upload',
+        filePath: file.path,
+        name: 'file',
+        success: (res) => {
+          // 上传成功
+          const data = JSON.parse(res.data)
+          files.value.push(data.data)
+          fileList.value += data.data + " "
+          uni.showToast({
+            title: '上传文件成功',
+            icon: 'success'
+          })
+        },
+        fail: (err) => {
+          // 上传失败
+          uni.showToast({
+            title: '上传文件失败',
+            icon: 'none'
+          })
+        }
+      })
+    },
+    fail: (err) => {
+      // 选择失败
+      uni.showToast({
+        title: '选择文件失败',
+        icon: 'none'
+      })
+    }
+  })
+}
 </script>
 
 <style scoped lang="scss">
@@ -62,5 +119,12 @@ const addResource = async () => {
   display: flex;
   justify-content: space-around;
   margin: 10px 0;
+}
+.fileList {
+  display: flex;
+  flex-wrap: wrap;
+  .fileItem {
+    font-size: xx-small;
+  }
 }
 </style>
