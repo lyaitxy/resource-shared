@@ -37,9 +37,27 @@ export const getPublishedResourceAPI = (data: {publisher_id: number}) => {
 }
 
 //新增资源
-export const postAddResourceAPI = (data: {desc: string, content: string, publisher_id: number, fileList: string}) => {
+export const postAddResourceAPI = (data: {desc: string, content: string, publisher_id: number, fileList: string, publisher: string}) => {
   return http<allHttpRes<resource>>({
     url: '/resource/add',
+    method: 'POST',
+    data
+  })
+}
+
+// 收藏
+export const postLikeResourceAPI = (data: {resource_id: number, user_id: number}) => {
+  return http<allHttpRes<resource>>({
+    url: '/resource/likeResource',
+    method: 'POST',
+    data
+  })
+}
+
+// 取消收藏
+export const postUnlikeResourceAPI = (data: {resource_id: number, user_id: number}) => {
+  return http<allHttpRes<resource>>({
+    url: '/resource/cancelLikeResource',
     method: 'POST',
     data
   })

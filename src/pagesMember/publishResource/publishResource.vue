@@ -16,7 +16,12 @@
   </button>
   
   <view class="fileList">
-    <text class="fileItem" v-for="(item, index) in files" :key="index">{{ item }}</text>
+    <view class="fileItem" v-for="(item, index) in files" :key="index">
+      <uni-link
+        :href="item"
+        :text="item"
+      />
+    </view>
   </view>
   <view>
     <button type="primary" @click="publish">发布</button>
@@ -50,7 +55,8 @@ const addResource = async () => {
     desc: description.value,
     content: resourceDetail.value,
     publisher_id: memberStore.profile?.id!,
-    fileList: fileList.value
+    fileList: fileList.value,
+    publisher: memberStore.profile?.username!
   })
   if (res.code === 200) {
     // 新增成功
@@ -89,10 +95,6 @@ const uploadFile = () => {
           const data = JSON.parse(res.data)
           files.value.push(data.data)
           fileList.value += data.data + " "
-          uni.showToast({
-            title: '上传文件成功',
-            icon: 'success'
-          })
         },
         fail: (err) => {
           // 上传失败

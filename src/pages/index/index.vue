@@ -23,7 +23,7 @@
 </template>
 
 <script setup lang="ts">
-import { onLoad } from '@dcloudio/uni-app'
+import { onShow } from '@dcloudio/uni-app'
 import { ref } from 'vue'
 import type { resource } from '@/types/resource'
 import {getTop10ResourceAPI} from '@/services/resources'
@@ -46,7 +46,7 @@ const search = async(value:any) => {
 const cancelSearch = () => {
   isSearch.value = false;
 }
-onLoad(() => {
+onShow(() => {
   // 获取热门资源
   getHotResource();
 })
