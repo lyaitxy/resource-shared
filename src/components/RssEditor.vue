@@ -189,7 +189,7 @@
 		display: inline-block;
 		padding: 8px 8px;
 		width: 24px;
-		height: 24px;
+		/* height: 24px; */
 		cursor: pointer;
 		font-size: 20px;
 	}
@@ -206,7 +206,7 @@
 		width: 100%;
 		min-height: 30vh;
 		height: 100%;
-		margin-top: 20px;
+		/* margin-top: 20px; */
 		font-size: 16px;
 		line-height: 1.5;
 	}

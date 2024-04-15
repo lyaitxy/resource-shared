@@ -7,6 +7,8 @@ export type memberItem = {
   password: string
   /** 联系方式 */
   phone: string
+  /** 头像 */
+  avatar: string
 }
 
 export type loginRes = {

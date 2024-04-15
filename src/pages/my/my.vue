@@ -2,7 +2,7 @@
   <view>
     <!--个人头像与名称-->
     <view class="user-info" v-if="isLogin">
-      <image src="https://img.yzcdn.cn/vant/cat.jpeg" class="avatar"></image>
+      <image :src="avatar" class="avatar"></image>
       <text class="name">{{ username }}</text>
     </view>
     <view v-else>
@@ -23,7 +23,7 @@
         <text class="text">发布资源</text>
         <uni-icons type="right" size="20" color="#999"></uni-icons>
       </view>
-      <view class="item">
+      <view class="item" @tap="touserInfo">
         <text class="text">个人信息</text>
         <uni-icons type="right" size="20" color="#999"></uni-icons>
       </view>
@@ -41,8 +41,8 @@ import { onShow } from '@dcloudio/uni-app'
 import { useMemberStore } from '@/stores';
 const memberStore = useMemberStore();
 // 获取用户信息
-const username = ref('');
-
+let username = ref('');
+let avatar = ref('');
 //是否登录
 const isLogin = ref(false);
 //跳转到登录界面
@@ -83,6 +83,19 @@ const toAddResource = () => {
     url: '/pagesMember/publishResource/publishResource'
   })
 }
+//跳转到个人信息
+const touserInfo = () => {
+  if(memberStore.profile === undefined) {
+    uni.showToast({
+      title: '请先登录',
+      icon: 'none'
+    })
+    return;
+  }
+  uni.navigateTo({
+    url: '/pagesMember/userInfo/userInfo'
+  })
+}
 const openLiked = () => {
   if(memberStore.profile === undefined) {
     uni.showToast({
@@ -97,6 +110,7 @@ const openLiked = () => {
 }
 onShow(() => {
   username.value = memberStore.profile?.username || '';
+  avatar.value = memberStore.profile?.avatar || '';
   isLogin.value = memberStore.profile ? true : false;
 })
 </script>
@@ -106,7 +120,7 @@ onShow(() => {
   width: 70%;
   display: flex;
   align-items: center;
-  padding: 20px;
+  padding: 10px;
   border: 1px solid #000;
   /* 居中 */
   margin: 0 auto;
@@ -116,8 +130,8 @@ onShow(() => {
     border-radius: 50%;
   }
   .name {
-    margin-left: 20px;
-    font-size: 24px;
+    margin-left: 40px;
+    font-size: 20px;
   }
 }
 .line {

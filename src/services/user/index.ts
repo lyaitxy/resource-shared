@@ -9,3 +9,21 @@ export const postLoginAPI = (data: { username: string, password: string }) => {
     data,
   })
 }
+
+// 注册接口
+export const postRegisterAPI = (data: { username: string, password: string }) => {
+  return http<allHttpRes<loginRes>>({
+    url: '/user/register',
+    method: 'POST',
+    data,
+  })
+}
+
+// 更换头像
+export const postAvatarAPI = (data: { username:string, avatar: string}) => {
+  return http<allHttpRes<string>>({
+    url: '/user/updateAvatar',
+    method: 'POST',
+    data,
+  })
+}

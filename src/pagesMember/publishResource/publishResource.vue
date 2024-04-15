@@ -72,7 +72,7 @@ const addResource = async () => {
   } else {
     // 新增失败
     uni.showToast({
-      title: res.message,
+      title: res.msg,
       icon: 'none'
     })
   }

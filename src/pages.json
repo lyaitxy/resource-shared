@@ -80,13 +80,19 @@
 				{
 					"path": "myPublished/myPublished",
 					"style": {
-						"navigationBarTitleText": "myPublished"
+						"navigationBarTitleText": "我的发布"
 					}
 				},
 				{
 					"path": "publishResource/publishResource",
 					"style": {
 						"navigationBarTitleText": "发布资源"
+					}
+				},
+				{
+					"path": "userInfo/userInfo",
+					"style": {
+						"navigationBarTitleText": "个人信息"
 					}
 				}
 			]
@@ -96,19 +102,33 @@
 	"preloadRule": {
 		"pagesMember/settings/settings": {
 			"network": "all",
-			"packages": ["pagesMember"]
+			"packages": [
+				"pagesMember"
+			]
 		},
 		"pagesMember/myLIked/myLIked": {
 			"network": "all",
-			"packages": ["pagesMember"]
+			"packages": [
+				"pagesMember"
+			]
 		},
 		"pagesMember/myPublished/myPublished": {
 			"network": "all",
-			"packages": ["pagesMember"]
+			"packages": [
+				"pagesMember"
+			]
 		},
 		"pagesMember/publishResource/publishResource": {
 			"network": "all",
-			"packages": ["pagesMember"]
+			"packages": [
+				"pagesMember"
+			]
+		},
+		"pagesMember/userInfo/userInfo": {
+			"network": "all",
+			"packages": [
+				"pagesMember"
+			]
 		}
 	}
 }
