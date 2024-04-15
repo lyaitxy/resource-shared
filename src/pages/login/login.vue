@@ -43,7 +43,7 @@ const submit = async() => {
   } else {
     //登录失败
     uni.showToast({
-      title: res.message,
+      title: res.msg,
       icon: 'none'
     })
   }

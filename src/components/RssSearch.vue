@@ -2,6 +2,7 @@
   <view class="rss-search">
     <!-- 这里放一个搜索框 -->
     <uni-search-bar
+      class="search-bar"
       v-model="searchValue"
       placeholder="请输入搜索关键词"
       bgColor="#EEEEEE"
@@ -55,13 +56,16 @@ const cancelSearch = () => {
   display: flex;
   justify-content: center;
   .search-bar {
-    width: 50%;
+    position: relative;
+    left: -5%;
   }
   .search-button {
+    position: relative;
+    top: 10px;
     width: 30%;
     height: 40px;
+    line-height: 35px;
     color: #020202;
-    text-align: center;
     border: 1px solid #020202;
     border-radius: 5px;
   }
