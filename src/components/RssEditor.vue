@@ -2,6 +2,7 @@
 	<view class="container">
 		<view class="page-body">
 			<view class='wrapper'>
+
 				<view class='toolbar' @tap="format" style="height: 120px;overflow-y: auto;">
 					<view :class="formats.bold ? 'ql-active' : ''" class="iconfont icon-zitijiacu" data-name="bold">
 					</view>
@@ -33,7 +34,7 @@
 					<view class="iconfont icon-outdent" data-name="indent" data-value="-1"></view>
 					<view class="iconfont icon-indent" data-name="indent" data-value="+1"></view>
 					<view class="iconfont icon-fengexian" @tap="insertDivider"></view>
-					<view class="iconfont icon-charutupian" @tap="insertImage"></view>
+					<!-- <view class="iconfont icon-charutupian" @tap="insertImage"></view> -->
 					<view :class="formats.header === 1 ? 'ql-active' : ''" class="iconfont icon-formatheader1"
 						data-name="header" :data-value="1"></view>
 					<view :class="formats.script === 'sub' ? 'ql-active' : ''" class="iconfont icon-zitixiabiao"
@@ -48,11 +49,13 @@
 				</view>
         <!-- 一根线 -->
         <view style="width: 100%;height: 1px;background-color: #000;"></view>
+
 				<view class="editor-wrapper">
 					<editor id="editor" class="ql-container" placeholder="开始输入..." show-img-size show-img-toolbar
 						show-img-resize @statuschange="onStatusChange" :read-only="readOnly" @ready="onEditorReady">
 					</editor>
 				</view>
+
 			</view>
 		</view>
 	</view>
@@ -130,31 +133,31 @@
 					text: formatDate
 				})
 			},
-			insertImage() {
-				uni.chooseImage({
-					count: 1,
-					success: (res) => {
-            // // 将图片上传到服务器
-            // let imgUrl = ''
-            // uni.uploadFile({
-            //   url: 'http://127.0.0.1:8081/upload',
-            //   filePath: res.tempFilePaths[0],
-            //   name: 'file',
-            //   success: (uploadFileRes) => {
-            //     console.log('uploadFileRes', JSON.parse(uploadFileRes.data).data)
-            //     imgUrl = JSON.parse(uploadFileRes.data).data
-            //   }
-            // })
-						this.editorCtx.insertImage({
-							src: res.tempFilePaths[0], 
-							alt: '图像',
-							success: function() {
-                console.log('insert image success')
-							}
-						})
-					}
-				})
-			},
+			// insertImage() {
+			// 	uni.chooseImage({
+			// 		count: 1,
+			// 		success: (res) => {
+      //       // // 将图片上传到服务器
+      //       // let imgUrl = ''
+      //       // uni.uploadFile({
+      //       //   url: 'http://127.0.0.1:8081/upload',
+      //       //   filePath: res.tempFilePaths[0],
+      //       //   name: 'file',
+      //       //   success: (uploadFileRes) => {
+      //       //     console.log('uploadFileRes', JSON.parse(uploadFileRes.data).data)
+      //       //     imgUrl = JSON.parse(uploadFileRes.data).data
+      //       //   }
+      //       // })
+			// 			this.editorCtx.insertImage({
+			// 				src: res.tempFilePaths[0], 
+			// 				alt: '图像',
+			// 				success: function() {
+      //           console.log('insert image success')
+			// 				}
+			// 			})
+			// 		}
+			// 	})
+			// },
       // 获取编辑器内容
       getContent() {
         this.editorCtx.getContents({
