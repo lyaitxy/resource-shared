@@ -1,7 +1,7 @@
 <template>
   <view>
     <!--个人头像与名称-->
-    <view class="user-info" v-if="isLogin">
+    <view class="user-info" v-if="isLogin" @tap="touserInfo">
       <image :src="avatar" class="avatar"></image>
       <text class="name">{{ username }}</text>
     </view>
@@ -128,6 +128,9 @@ onShow(() => {
     width: 80px;
     height: 80px;
     border-radius: 50%;
+    //border: 1px solid #f9f5f5;
+    //阴影
+    box-shadow: 0 0 5px #b9b8b8;
   }
   .name {
     margin-left: 40px;
