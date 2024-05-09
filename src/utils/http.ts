@@ -1,5 +1,5 @@
 import { useMemberStore } from "@/stores"
-const baseURL = "http://localhost:8081"
+const baseURL = "http://47.107.84.68:8081"
 //请求拦截器
 const httpInterceptor = {
   //拦截前触发
